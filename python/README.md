@@ -1,42 +1,24 @@
-# Cracked.to Authentication System - Python
+# Python Authentication Implementation
 
-This repository contains the Python implementation of the authentication system designed for integration with the Cracked.to platform. This system ensures that only users with a valid authentication key and belonging to specific user groups (Premium+ and above) can access the application.
+This folder contains the Python implementation of the authentication system. The system handles user authentication by verifying credentials against an endpoint and managing local key storage.
 
-## Getting Started
+## Features
+- Read and save authentication key
+- Generate and verify hardware ID
+- Communicate with the authentication endpoint
+- Handle responses and manage user access
 
-To use the authentication system, follow these steps:
+## Code Example
+Refer to `code_examples.py` for the full implementation, illustrating the process of checking for an existing key, requesting authentication, and handling new users.
 
-1. **Download the script:** Clone this repository or download the `auth.py` file.
-2. **Execute the script:** Run `python auth.py` from your command line or terminal.
-3. **Enter your authentication key:** On the first run, you will be prompted to enter your Cracked.to authentication key. This key will be saved for future use.
-4. **Authenticate:** The script will attempt to authenticate you with the Cracked.to platform. If successful, you will be greeted with your username and a confirmation of access.
+## Dependencies
+- `requests`: For making HTTP requests to the authentication endpoint.
+- `json`: For parsing the response from the authentication endpoint.
+- `uuid`: For generating the hardware ID.
+- `os`: For file operations related to the local storage of the authentication key.
 
-## Understanding the Script
+## Security
+The local storage of the authentication key (`key.dat`) should be secured, and the HWID is used to bind the authentication to the user's hardware.
 
-### Key Storage
-
-The authentication key is stored locally in `key.dat` for ease of use in subsequent authentication attempts.
-
-### HWID
-
-A hardware ID (HWID) unique to your device is generated and used as part of the authentication process. This binds your session to your hardware, enhancing security.
-
-### Premium Group Check
-
-The script checks if you belong to one of the specified Premium+ groups based on the response from the authentication server.
-
-## Troubleshooting
-
-### Authentication Key File Not Found
-
-If `key.dat` is not found, you'll be prompted to enter your auth key again.
-
-### Authentication Errors
-
-Network issues or incorrect auth keys will result in an authentication failed message. Double-check your internet connection and auth key.
-
-## Source Code
-
-The source code for `auth.py` can be found in this repository.
-
-This README provides a step-by-step guide on how to use the `auth.py` file.
+## Usage
+The script can be executed directly and will interactively prompt for an authentication key if not previously stored.
